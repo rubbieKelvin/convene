@@ -6,7 +6,7 @@ from .constants import BASE_DIR
 dotenv.load_dotenv(BASE_DIR / '.env')
 
 env = lambda x : {
-        **dotenv.dotenv_values,
+        **dotenv.dotenv_values(BASE_DIR / '.env'),
         **os.environ # system environ should override .env
     }.get(x)
 
