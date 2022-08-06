@@ -7,57 +7,53 @@ from apps.main.managers.user import UserManager
 
 
 class User(AbstractUser):
-	username = None
+    username = None
 
-	id = models.UUIDField(
+    id = models.UUIDField(
         default=uuid4,
         unique=True,
         editable=False,
         primary_key=True)
 
-	email = models.EmailField(
+    email = models.EmailField(
         unique=True,
         max_length=225)
 
-	first_name = models.CharField(
+    first_name = models.CharField(
         max_length=30,
         null=False,
         blank=False)
 
-	last_name = models.CharField(
+    last_name = models.CharField(
         max_length=30,
         null=False,
         blank=False)
     
-	phone = models.CharField(
+    phone = models.CharField(
         unique=True,
         default=None,
         null=True,
         blank=True,
         max_length=16)
 
-	secondary_phone = models.CharField(
-        default=None,
-        blank=True,
-        max_length=16,
-        null=True)
-
-	photo = models.ImageField(
+    photo = models.ImageField(
         null=True,
         blank=True,
-        max_length=5000)
+        max_length=1000)
 
-	USERNAME_FIELD = 'email'
-	REQUIRED_FIELDS = ['first_name', 'last_name']
+    last_seen = models.DateTimeField(auto_now=True)
 
-	objects = UserManager()
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
-	def __str__(self) -> str:
-		return self.email
+    objects = UserManager()
 
-	def __repr__(self) -> str:
-		return f"<User {self.email}>"
+    def __str__(self) -> str:
+        return self.email
 
-	@property
-	def fullname(self) -> str:
-		return f"{self.first_name} {self.last_name}"
+    def __repr__(self) -> str:
+        return f"<User {self.email}>"
+
+    @property
+    def fullname(self) -> str:
+        return f"{self.first_name} {self.last_name}"
