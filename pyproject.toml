@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "convene"
+version = "0.1.0"
+description = "slack like app"
+authors = ["rubbie kelvin <dev.rubbie@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.1"
+djangorestframework = "^3.13.1"
+psycopg2 = "^2.9.3"
+django-channels = "^0.7.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
