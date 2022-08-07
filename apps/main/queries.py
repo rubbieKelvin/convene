@@ -28,10 +28,10 @@ def getSpace(user: str|User, id:str) -> Space|None:
     """returns a space by id"""
     return mySpaces(user).filter(id=id).first()
 
-def getMyRooms(user: str|User, space_id:str) -> models.QuerySet[Room]:
+def getMyRooms(user: str|User, space:str|Space) -> models.QuerySet[Room]:
     """returns all the rooms for a space a user is in"""
     return roomsAll().filter(
-        space=getSpace(user, space_id),
+        space=space,
         memberships__member=user)
 
 def getSpaceMembers(space: str|Space) -> models.QuerySet[User]:
