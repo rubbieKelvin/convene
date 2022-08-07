@@ -1,3 +1,5 @@
 #!/bin/zsh
-local _shell_command=$(python3 libs/pyrun.py $1)
-eval $_shell_command
+export _pyrun_shell_command=$(python3 libs/pyrun.py $1)
+echo -e "\e[32m$ $_pyrun_shell_command\e[0m"
+eval $_pyrun_shell_command
+unset _pyrun_shell_command
