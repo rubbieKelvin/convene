@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 from uuid import uuid4
+from typing_extensions import Self
 from apps.main.managers.user import UserManager
 
 

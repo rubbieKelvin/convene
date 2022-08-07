@@ -12,10 +12,21 @@ psycopg2 = "^2.9.3"
 django-channels = "^0.7.0"
 python-dotenv = "^0.20.0"
 Pillow = "^9.2.0"
+typing-extensions = "^4.3.0"
 
 [tool.poetry.dev-dependencies]
 ipython = "^8.4.0"
+toml = "^0.10.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[pyrun.scripts]
+dev = "python manage.py runserver"
+migrate = "python manage.py makemigrations main; python manage.py migrate"
+reset = 'pyrun reset:migration; pyrun reset:db'
+reset_migration = "rm -r apps/**/migrations/"
+reset_db = "rm db.sqlite3"
+super = "export DJANGO_SUPERUSER_PASSWORD=admin; python manage.py createsuperuser --noinput --first_name admin --last_name user --email admin@app.dev"
+shell = "python manage.py shell"

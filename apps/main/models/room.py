@@ -2,8 +2,9 @@ from uuid import uuid4
 from django.db import models
 
 class Room(models.Model):
-    id = models.UUIDField(default=uuid4, primary_key=True)
+    id = models.UUIDField(default=uuid4, primary_key=True, editable=False)
     name = models.CharField(max_length=20)
+    creator = models.ForeignKey('main.User', on_delete=models.CASCADE, related_name="created_rooms")
     space = models.ForeignKey('main.Space', on_delete=models.CASCADE, related_name="rooms")
     private = models.BooleanField(default=False)
     is_deleted = models.BooleanField(default=False)
@@ -18,6 +19,6 @@ class Room(models.Model):
         ]
 
 class RoomMembership(models.Model):
-    id = models.UUIDField(default=uuid4, primary_key=True)
+    id = models.UUIDField(default=uuid4, primary_key=True, editable=False)
     member = models.ForeignKey('main.User', on_delete=models.CASCADE, related_name="rooms")
     room = models.ForeignKey('main.Room', on_delete=models.CASCADE, related_name="memberships")
