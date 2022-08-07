@@ -1,0 +1,3 @@
+#!/bin/zsh
+local _shell_command=$(python3 libs/pyrun.py $1)
+eval $_shell_command
