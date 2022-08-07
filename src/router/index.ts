@@ -5,7 +5,11 @@ export default createRouter({
   routes: [
     {
       path: "/",
-      component: () => import("../components/HelloWorld.vue"),
+      component: () => import("@/pages/index.vue"),
     },
+    {
+      path: "/login",
+      component: () => import("@/pages/login.vue")
+    }
   ],
 });
